@@ -1,22 +1,44 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "Inter", sans-serif;
+html {
+    font-family: "DM Sans", sans-serif;
+    background: white;
 }
 
-a {
-  color: #84309c;
-  text-decoration: none;
+.nft-grid {
+    display: grid;
+    --template-column-gutters: 8px;
+    --template-columns: 1;
+    --template-column-compact-multiplier: 1;
+    --template-reduced-columns: 0;
+    --template-reduced-columns-multiplier: 1;
+    gap: var(--template-column-gutters);
+    grid-auto-rows: minmax(0px, 1fr);
+    grid-template-columns: repeat(calc(var(--template-columns) - (var(--template-reduced-columns) * var(--template-reduced-columns-multiplier))), minmax(0, 1fr));
 }
 
-* {
-  box-sizing: border-box;
+@media (min-width: 320px) {
+    .nft-grid {
+        --template-columns: 2;
+    }
 }
 
-body {
-  color: #e7e8e8;
-  background: #070707;
+@media (min-width: 480px) {
+    .nft-grid {
+        --template-columns: 3;
+    }
+}
+
+@media (min-width: 640px) {
+    .nft-grid {
+        --template-columns: 4;
+    }
+}
+
+@media (min-width: 768px) {
+    .nft-grid {
+        --template-column-gutters: 16px;
+    }
 }
